@@ -1,0 +1,53 @@
+name: Deploy
+
+on:
+  issue_comment:
+    types: [created]
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+    secrets:
+      CI_BOT_APP_PRIVATE_KEY:
+        required: true
+
+permissions: {}
+
+jobs:
+  deploy:
+    uses: hoverkraft-tech/ci-github-publish/.github/workflows/deploy-chart.yml@607069025f6c1312680ed0864c4d9f4338b82dfe # ratchet:hoverkraft-tech/ci-github-publish/.github/workflows/deploy-chart.yml@0.26.5
+    permissions:
+      actions: read
+      contents: write
+      deployments: write
+      id-token: write
+      issues: write
+      packages: write
+      pull-requests: write
+    secrets:
+      oci-registry-password: ${{ secrets.GITHUB_TOKEN }}
+      github-app-key: ${{ secrets.CI_BOT_APP_PRIVATE_KEY }}
+    with:
+      url: ${{ (inputs.environment == 'uat' && vars.UAT_URL) || (inputs.environment == 'production' && vars.PRODUCTION_URL) || vars.REVIEW_APPS_URL }}
+      tag: ${{ inputs.tag }}
+      environment: ${{ inputs.environment }}
+      github-app-client-id: ${{ vars.CI_BOT_APP_CLIENT_ID }}
+      deploy-parameters: |
+        { "repository": "${{ github.repository_owner}}/argocd-app-of-apps" }
+      images: |
+        [
+          { "name": "backend", "context": ".", "dockerfile": "./docker/backend/Dockerfile", "target": "prod", "platforms": ["linux/amd64"] },
+          { "name": "frontend", "context": ".", "dockerfile": "./docker/frontend/Dockerfile", "target": "prod", "platforms": ["linux/amd64"] },
+          { "name": "live-data-generator", "context": ".", "dockerfile": "./docker/live-data-generator/Dockerfile", "target": "prod", "platforms": ["linux/amd64"] }
+        ]
+      chart-values: |
+        [
+          { "path": ".backend.image", "image": "backend" },
+          { "path": ".frontend.image", "image": "frontend" },
+          { "path": ".live-data-generator.api.image", "image": "live-data-generator" },
+          { "path": ".live-data-generator.ui.image", "image": "live-data-generator" }
+        ]

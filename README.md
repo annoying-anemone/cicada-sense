@@ -2,6 +2,8 @@
 
 Production-grade SaaS for real-time cicada ecosystem monitoring.
 
+A simple test
+
 ## Quick Start
 
 ```bash

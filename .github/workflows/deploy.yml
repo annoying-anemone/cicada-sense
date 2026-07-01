@@ -42,14 +42,14 @@ jobs:
         [
           { "name": "backend", "context": ".", "dockerfile": "./docker/backend/Dockerfile", "target": "prod", "platforms": ["linux/amd64"] },
           { "name": "frontend", "context": ".", "dockerfile": "./docker/frontend/Dockerfile", "target": "prod", "platforms": ["linux/amd64"] },
-          { "name": "live-data-generator", "context": ".", "dockerfile": "./docker/live-data-generator/Dockerfile", "target": "prod", "platforms": ["linux/amd64"] },
-          { "path": "deploy.backend.ingress.hosts[0].host", "value": "{{ url }}" },
-          { "path": "deploy.frontend.ingress.hosts[0].host", "value": "{{ url }}" }
+          { "name": "live-data-generator", "context": ".", "dockerfile": "./docker/live-data-generator/Dockerfile", "target": "prod", "platforms": ["linux/amd64"] }
         ]
       chart-values: |
         [
           { "path": ".backend.image", "image": "backend" },
           { "path": ".frontend.image", "image": "frontend" },
           { "path": ".live-data-generator.api.image", "image": "live-data-generator" },
-          { "path": ".live-data-generator.ui.image", "image": "live-data-generator" }
+          { "path": ".live-data-generator.ui.image", "image": "live-data-generator" },
+          { "path": "deploy.backend.ingress.hosts[0].host", "value": "{{ url }}" },
+          { "path": "deploy.frontend.ingress.hosts[0].host", "value": "{{ url }}" }
         ]

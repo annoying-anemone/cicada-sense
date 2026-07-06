@@ -104,6 +104,9 @@ jobs:
       issues: read
       packages: write
       pull-requests: read
+    with:
+      oci-registry: ${{ vars.OCI_REGISTRY }}
+      sign: false
       images: |
         [
           {

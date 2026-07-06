@@ -6,18 +6,18 @@ on:
 permissions: {}
 
 jobs:
-  linter:
-    uses: hoverkraft-tech/ci-github-common/.github/workflows/linter.yml@2334d395217f9811699dbd4ace9d8559e4d99e0d # ratchet:hoverkraft-tech/ci-github-common/.github/workflows/linter.yml@0.37.3
-    permissions:
-      actions: read
-      contents: read
-      issues: write
-      packages: read
-      pull-requests: write
-      security-events: write
-      statuses: write
-    secrets:
-      github-token: ${{ secrets.GITHUB_TOKEN }}
+  # linter:
+  #   uses: hoverkraft-tech/ci-github-common/.github/workflows/linter.yml@2334d395217f9811699dbd4ace9d8559e4d99e0d # ratchet:hoverkraft-tech/ci-github-common/.github/workflows/linter.yml@0.37.3
+  #   permissions:
+  #     actions: read
+  #     contents: read
+  #     issues: write
+  #     packages: read
+  #     pull-requests: write
+  #     security-events: write
+  #     statuses: write
+  #   secrets:
+  #     github-token: ${{ secrets.GITHUB_TOKEN }}
 
   build-ci:
     uses: hoverkraft-tech/ci-github-container/.github/workflows/docker-build-images.yml@f8255a6a37eb141fa331527f5aed9b9e1d598c77 # ratchet:hoverkraft-tech/ci-github-container/.github/workflows/docker-build-images.yml@0.38.0

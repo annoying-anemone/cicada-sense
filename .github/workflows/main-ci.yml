@@ -18,7 +18,7 @@ jobs:
       packages: write
       pull-requests: read
     with:
-      images: '["api-ci","web-ci","worker-ci","api","web","worker"]'
+      images: '["backend-ci", "frontend-ci", "live-data-generatore-ci", "backend","frontend", "live-data-generatore"]'
 
   ci:
     name: Continuous Integration

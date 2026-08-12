@@ -3,7 +3,7 @@ import { GeoJsonLayer, ScatterplotLayer } from "@deck.gl/layers";
 import { MapboxOverlay } from "@deck.gl/mapbox";
 import type { Feature, Polygon } from "geojson";
 import { Layers3, LocateFixed, RotateCcw } from "lucide-react";
-import maplibregl, { LngLatBounds, type Map as MapLibreMap, NavigationControl, ScaleControl } from "maplibre-gl";
+import { LngLatBounds, Map as MapLibre, type Map as MapLibreMap, NavigationControl, ScaleControl } from "maplibre-gl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { LayerVisibility } from "../../application/use-dashboard.js";
 import { WorkspaceViewModel } from "../../application/workspace-view-model.js";
@@ -203,7 +203,7 @@ export function MapWorkspace({
     }
 
     try {
-      const map = new maplibregl.Map({
+      const map = new MapLibre({
         bearing: 16,
         center: DEFAULT_MAP_CENTER,
         container,

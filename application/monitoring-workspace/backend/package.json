@@ -17,26 +17,26 @@
     "typecheck": "npm run prisma:generate && tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@nestjs/common": "^11.1.27",
-    "@nestjs/core": "^11.1.27",
-    "@nestjs/platform-express": "^11.1.27",
+    "@nestjs/common": "^11.1.29",
+    "@nestjs/core": "^11.1.29",
+    "@nestjs/platform-express": "^11.1.29",
     "@opentelemetry/api": "^1.9.1",
-    "@prisma/adapter-pg": "^7.8.0",
-    "@prisma/client": "^7.8.0",
+    "@prisma/adapter-pg": "^7.9.1",
+    "@prisma/client": "^7.9.1",
     "@socket.io/redis-adapter": "^8.3.0",
-    "@vitest/coverage-v8": "^4.1.9",
-    "pg": "^8.16.3",
-    "redis": "^6.0.1",
+    "@vitest/coverage-v8": "^4.1.10",
+    "pg": "^8.23.0",
+    "redis": "^6.2.1",
     "socket.io": "^4.8.3",
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.1",
-    "@types/node": "^26.0.1",
-    "prisma": "^7.8.0",
-    "tsx": "^4.22.4",
+    "@biomejs/biome": "^2.5.8",
+    "@types/node": "^26.2.0",
+    "prisma": "^7.9.1",
+    "tsx": "^4.23.12",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "overrides": {
     "@hono/node-server": "1.19.13",

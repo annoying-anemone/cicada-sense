@@ -33,7 +33,7 @@ CMD ["tail", "-f", "/dev/null"]
 FROM ci AS build
 RUN npm run build
 
-FROM nginxinc/nginx-unprivileged:1.31.2-alpine AS prod
+FROM nginxinc/nginx-unprivileged:1.31.3-alpine AS prod
 COPY --link docker/frontend/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --link --from=build /usr/src/app/dist /usr/share/nginx/html
 EXPOSE 5173
